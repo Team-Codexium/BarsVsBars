@@ -1,6 +1,11 @@
 import { useForm } from 'react-hook-form';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AppWrap from '../wrapper/AppWrapper';
+import axios from 'axios';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { loginSchema } from '../lib/userModel';
+import { useState } from 'react';
+import Spinner from './Spinner';
 
 
 
@@ -11,12 +16,32 @@ const inputErrors = "text-red-500"
 
 
 const Login = () => {
+  const navigate = useNavigate()
+  const [errorMessage, setErrorMessage] = useState("");
+  const { register, handleSubmit, formState: { errors, isSubmitting }, } = useForm({
+    resolver: yupResolver(loginSchema)
+  });
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post("http://localhost:3000/api/auth/login", data, {
+        withCredentials: true
+      });
+      // console.log("response",response);
 
-  const onSubmit = (data) => {
-    console.log(data)
-    Navigate("/dashboard");
+      if (response.data.success) {
+        navigate("/dashboard");
+      }
+
+    } catch (error) {
+      console.error("Error during login: ", error.message);
+      if (error.response.status === 400) {
+        setErrorMessage(error.response.data.message);
+      }
+      if (error.response.status === 401) {
+        setErrorMessage(error.response.data.message);
+      }
+    }
   };
 
   return (
@@ -36,16 +61,21 @@ const Login = () => {
         <div className={`${inputDiv}`}>
           <label>Email</label>
           <input className={`${inputField}`} {...register('email')} placeholder="email@example.com" type="email" />
-          <p className={`${inputErrors}`}>{errors.email?.message}</p>
+          {errors.email && <p className={`${inputErrors}`}>{errors.email?.message}</p>}
         </div>
 
         <div className={`${inputDiv}`}>
           <label>Password</label>
           <input className={`${inputField}`} {...register('password')} type="password" placeholder="••••••••" />
-          <p className={`${inputErrors}`}>{errors.password?.message}</p>
+          {errors.password && <p className={`${inputErrors}`}>{errors.password?.message}</p>}
         </div>
 
-        <button className='bg-primary p-2 rounded-md w-full text-secondary' type="submit">Log in</button>
+        <button className={`p-2 rounded-md w-full text-secondary ${isSubmitting ? "bg-[#1F2937]" : "bg-primary"}`} type="submit" >{isSubmitting ? (
+          <div className="flex justify-center items-center space-y-5">
+            <Spinner /> Logging in
+          </div>)
+          : "Log in"}</button>
+        {errorMessage && <p className="font-bold font-poppinp text-center text-red-800">{errorMessage}</p>}
         <p>First time using it?<Link className="text-primary ml-2 font-bold" to="/sign-up">Register here to rock the world</Link></p>
       </form>
     </div>

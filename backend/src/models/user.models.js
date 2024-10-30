@@ -29,7 +29,7 @@ const UserSchema = new Schema(
     },
     profilePicture: {
       type: String,
-      default: "default-profile-picture.jpg",
+      default: "../../public/pfp.jpg",
     },
     userType: {
       type: String,
