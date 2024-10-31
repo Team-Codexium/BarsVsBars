@@ -1,10 +1,10 @@
 {
-  "name": "hhbattlearena",
+  "name": "barsvsbars",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"nodemon ../backend/src/index.js\""
+    "dev": "nodemon src/index.js"
   },
   "author": "",
   "license": "ISC",

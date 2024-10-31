@@ -1,13 +1,22 @@
 import mongoose, { Schema } from 'mongoose';
 
 const VoterSchema = new Schema({
-  userId: {
+  user: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true,
+    index: true,
   },
-  battleId: {
+  battle: {
     type: Schema.Types.ObjectId,
-    ref: 'Battle'
+    ref: 'Battle',
+    required: true,
+    index: true,
+    unique: true, // so user cant vote multiple times in same battle,
+    validate: {
+      validator: (v) => v.expiryDate > new Date(),
+      message: 'Battle has expired',
+    }
   },
   vote: {
     type: Number,
@@ -15,12 +24,13 @@ const VoterSchema = new Schema({
     max: 1,
     required: true
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
+  voteFor: {
+    type: String,
+    enum: ['challenger', 'opponent'],
+    required: true,
   }
 }, {
-  unique: [['userId', 'battleId']],// so user cant vote multiple times
+  timestamps: true,
 });
 
 const BattleSchema = new Schema({
@@ -49,7 +59,11 @@ const BattleSchema = new Schema({
     type: Date,
     required: true,
     index: true,
-    expires: '1d' || '3d' || '7d' // Expire after 24 hours
+    expires: {
+      type: String,
+      enum: ["1d", "3d", "7d"],
+      default: "1d",
+    }
   },
   isExpired: {
     type: Boolean,
@@ -79,6 +93,6 @@ const BattleSchema = new Schema({
     default: [],
   }
 
-}, { timeseries: true,})
+}, { timestamps: true,})
 
 export const Battle  = mongoose.model('Battle', BattleSchema);

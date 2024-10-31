@@ -15,12 +15,12 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//   next();
+// });
 
 app.use(express.urlencoded({extended: true, limit: "16kb"}));
 app.use(express.static("../public"));
@@ -37,9 +37,9 @@ app.post("/api/auth/login", login);
 //connecting to db and startting the erver
 dbConnect().then(() => {
   app.listen(3000, () => {
-    // console.log('Server is running on port 3000');
+    console.log('Server is running on port 3000');
   });
 }).catch((err) => {
-  // console.log("SERVER CONNECTION FAILED: ", err.message);
+  console.log("SERVER CONNECTION FAILED: ", err.message);
   process.exit(1);
 })
