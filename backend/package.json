@@ -1,11 +1,14 @@
 {
-  "name": "hhbattlearena",
+  "name": "barsvsbars",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon src/index.js"
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev
   },
   "author": "",
   "license": "ISC",
