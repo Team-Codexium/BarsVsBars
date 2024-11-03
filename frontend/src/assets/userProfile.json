@@ -1,0 +1,42 @@
+{
+  "statistics": {
+    "wins": 73,
+    "losses": 21,
+    "draws": 4,
+    "totalBattles": 98
+  },
+  "currentBattles": [
+    {
+      "challenger": { "name": "Challenger Name", "votes": 0, "profilePic": "path/to/pfp" },
+      "opponent": { "name": "Opponent Name", "votes": 0, "profilePic": "path/to/pfp" },
+      "status": "Accepted" 
+    },
+    {
+      "challenger": { "name": "Challenger Name", "votes": 0, "profilePic": "path/to/pfp" },
+      "opponent": { "name": "", "votes": 0, "profilePic": "" },
+      "status": "Pending"
+    }
+  ],
+  "recentBattles": [
+    {
+      "challenger": { "name": "Challenger Name", "votes": 3423, "profilePic": "path/to/pfp" },
+      "opponent": { "name": "Opponent Name", "votes": 123, "profilePic": "path/to/pfp" },
+      "result": "Won"
+    },
+    {
+      "challenger": { "name": "Challenger Name", "votes": 3423, "profilePic": "path/to/pfp" },
+      "opponent": { "name": "Opponent Name", "votes": 123, "profilePic": "path/to/pfp" },
+      "result": "Won"
+    },
+    {
+      "challenger": { "name": "Challenger Name", "votes": 3423, "profilePic": "path/to/pfp" },
+      "opponent": { "name": "Opponent Name", "votes": 123, "profilePic": "path/to/pfp" },
+      "result": "Won"
+    },
+    {
+      "challenger": { "name": "Challenger Name", "votes": 3423, "profilePic": "path/to/pfp" },
+      "opponent": { "name": "Opponent Name", "votes": 123, "profilePic": "path/to/pfp" },
+      "result": "Won"
+    }
+  ]
+}

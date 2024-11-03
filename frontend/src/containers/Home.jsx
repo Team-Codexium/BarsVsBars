@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import AppWrap from "../wrapper/AppWrapper";
+import AppWrap from "../wrapper/AppWrap";
 import landingsrc from "../assets/img-1.jpeg";
 
 const Home = () => {
