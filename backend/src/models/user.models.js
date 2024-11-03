@@ -23,6 +23,10 @@ const UserSchema = new Schema(
       required: [true, "Password is required"],
       minlength: [8, "Minimum 8 characters required"],
     },
+    googleId: {
+      type: String,
+      default: null
+    },
     bio: {
       type: String,
       default: "Nothing to see here...",
@@ -34,7 +38,60 @@ const UserSchema = new Schema(
     userType: {
       type: String,
       enum: ["fan", "artist"],
+      required: true
     },
+    battles: {
+      type: [{
+        battleId: {
+          type: Schema.Types.ObjectId,
+          ref: 'Battle'
+        },
+        status: {
+          type: String,
+          enum: ['pending', 'in progress', 'completed', 'cancelled'],
+          default: 'pending'
+        }
+      }]
+    },
+    invited: {
+      type: [{
+        userId: {
+          type: Schema.Types.ObjectId,
+          ref: 'User'
+        },
+        battle: {
+          type: Schema.Types.ObjectId,
+          ref: 'Battle'
+        },
+        status: {
+          type: String,
+          enum: ['pending', 'accepted', 'rejected'],
+          default: 'pending'
+        }
+      }]
+    },
+    invitations: {
+      type: [{
+        userId: {
+          type: Schema.Types.ObjectId,
+          ref: 'User'
+        },
+        battle: {
+          type: Schema.Types.ObjectId,
+          ref: 'Battle'
+        },
+        status: {
+          type: String,
+          enum: ['pending', 'accepted', 'rejected'],
+          default: 'pending'
+        }
+      }]
+    },
+    stats: {
+      wins: {type: Number, default: 0},
+      loses: {type: Number, default: 0},
+      battles: {type: Number, default: 0}
+    }
   },
   {
     timestamps: true,
