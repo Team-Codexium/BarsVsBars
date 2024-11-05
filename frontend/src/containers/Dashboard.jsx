@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import userProfile from '../assets/userProfile.json'; // Mocked JSON data
 import AppWrap from '../wrapper/AppWrap';
 import { gradientBlueGreen } from '../constants/index';
+import Navbar from '../components/navBar';
 
 
 
@@ -15,18 +16,20 @@ const Dashboard = () => {
   if (!userData) return <div>Loading...</div>;
 
   return (
-    <div className="min-h-screen  text-gray-200 flex">
-      {/* Sidebar */}
-      <Sidebar />
-
-      {/* Main Content */}
-      <div className="flex-grow p-6 space-y-6">
+    <div className="min-h-screen  text-gray-200 flex flex-col">
         <Navbar />
 
+      
+      
+      <div className="flex-grow w-full flex p-6 space-x-6">
+      <Sidebar />
+<div className='space-y-3 w-full'>
         <Statistics stats={userData.statistics} />
 
         <BattleSection title="Current Battle" battles={userData.currentBattles} />
         <BattleSection title="Recent Battle" battles={userData.recentBattles} recent />
+
+</div>
       </div>
     </div>
   );
@@ -34,7 +37,7 @@ const Dashboard = () => {
 
 const Sidebar = () => (
   <aside className="w-64  p-4 flex flex-col space-y-4">
-    <h1 className="text-2xl font-bold">BarsVsBars</h1>
+    
     <nav className="space-y-2">
       <button className="block text-left p-2 hover:bg-gray-700 rounded">Dashboard</button>
       <button className="block text-left p-2 hover:bg-gray-700 rounded">Battles</button>
@@ -45,12 +48,7 @@ const Sidebar = () => (
   </aside>
 );
 
-const Navbar = () => (
-  <nav className="bg-purple-700 p-4 rounded flex justify-end space-x-4">
-    <button className="bg-purple-600 p-2 rounded">Invitations</button>
-    <div className="bg-purple-600 w-10 h-10 rounded-full"></div>
-  </nav>
-);
+
 
 const Statistics = ({ stats }) => (
   <section className="bg-purple-800 p-4 rounded-lg">
