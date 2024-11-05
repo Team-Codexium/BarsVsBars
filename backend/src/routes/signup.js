@@ -7,10 +7,10 @@ const Signup = async (req, res, next) => {
   const {fullName, email, password, bio, userType} = data;
 
   try {
-    console.log(data.email)
+
     //check if user already exists
     const user = await User.findOne({email});
-    console.log(user)
+
     //if user exists, return error message
     if (user) {
       return res.status(404).json({
