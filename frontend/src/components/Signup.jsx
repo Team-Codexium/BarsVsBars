@@ -1,4 +1,4 @@
-import AppWrap from '../wrapper/AppWrapper'
+import AppWrap from '../wrapper/AppWrap'
 import axios from 'axios'
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -38,7 +38,7 @@ const SignUp = () => {
 
 
   return (
-    <div className="h-[100vh] w-full m-auto flex flex-col space-y-8">
+    <div className="h-screen w-full m-auto flex flex-col space-y-8 overflow:hidden">
     <div className='flex flex-col text-secondary px-8 justify-center items-center pt-16'>
       <h1 className='font-season text-3xl font-bold text-center'>Let&apos;s Rock the world</h1>
       <p className='font-popping text-sm'>Join the Bars vs Bars revolution today by creating a free account</p>

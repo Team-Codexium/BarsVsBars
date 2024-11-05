@@ -1,13 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import AppWrap from '../wrapper/AppWrapper';
+import AppWrap from '../wrapper/AppWrap';
 import axios from 'axios';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../lib/userModel';
 import { useState } from 'react';
 import Spinner from './Spinner';
-
-
 
 const inputDiv = "flex flex-col space-y-1"
 const inputField = "shadow appearance-none border  rounded-lg py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline";
@@ -50,7 +48,7 @@ const Login = () => {
 
       <div className='flex flex-col text-secondary px-8 justify-center items-center pt-16'>
         <h1 className='font-season text-4xl font-extrabold text-center mb-4'>Welcome back we missed you</h1>
-        <p className='font-popping text-lg font-normal text-center'>
+        <p className='font-popping text-lg font-normal text-center font-season'>
           Explore what has happened in world of Bars vs Bars.
         </p>
       </div>

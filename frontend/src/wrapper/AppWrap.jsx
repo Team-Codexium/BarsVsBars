@@ -3,10 +3,10 @@ import { gradientPurple } from '../constants'
 
 const AppWrap = (Component) => () => {
   return (
-    <div className={`${gradientPurple} p-4`}>
+    <div className={`${gradientPurple} `}>
       <Component />
     </div>
   )
 }
 
-export default AppWrap
+export default AppWrap;
