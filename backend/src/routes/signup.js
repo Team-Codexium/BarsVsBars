@@ -29,7 +29,7 @@ const Signup = async (req, res, next) => {
 
     await newUser.save()
 
-    return res.json({status: true,  message: "User registered successfully"});
+    return res.json({success: true,  message: "User registered successfully"});
     
   } catch (error) {
     // console.log("Server error: ", error);
