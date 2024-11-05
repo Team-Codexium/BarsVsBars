@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { Login, Signup } from "./components";
-import { Dashboard, Home } from "./containers";
+import { Dashboard, Home} from "./containers";
+
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
         <Route exact path="/sign-up" element={<Signup />} />
         <Route exact path="/log-in" element={<Login />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
+      
       </Routes>
     </Router>
   );
