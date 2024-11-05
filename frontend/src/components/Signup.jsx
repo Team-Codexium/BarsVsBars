@@ -27,6 +27,7 @@ const SignUp = () => {
       const response = await axios.post("http://localhost:3000/api/auth/signup",data, {
         withCredentials: true
       });
+      console.log(response.data.success)
       if (response.data.success){
         navigate("/dashboard");
       }
