@@ -4,11 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-<<<<<<< HEAD
     "dev": "concurrently \"vite\" \"nodemon ../backend/src/index.js\""
-=======
-    "dev": "nodemon src/index.js"
->>>>>>> ca82330c774aaeab3581787a0eea4eac525fa8cc
   },
   "author": "",
   "license": "ISC",
