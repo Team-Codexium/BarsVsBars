@@ -1,6 +1,7 @@
 import React from "react";
 import { BellDot } from 'lucide-react';
 import { Link } from "react-router-dom";
+
 function Navbar() {
   return (
   <div className="flex justify-between items-center pt-5 px-4">
@@ -11,7 +12,7 @@ function Navbar() {
         </div>
         <Link to={`/profile`} className="pfp flex space-x-3 items-center justify-center">
             <h1 className="hidden md:block">Username</h1>
-            <img className="h-10 w-10 rounded-full" src="" alt="" />
+            <img className="h-10 w-10 rounded-full" src alt="" />
         </Link>
     </div>
   </div>

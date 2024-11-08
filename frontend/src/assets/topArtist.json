@@ -1,0 +1,52 @@
+[
+    {
+      "id": 1,
+      "name": "Artist 1",
+      "wins": 32,
+      "losses": 32,
+      "profilePhoto": "link_to_photo"
+    },
+    {
+      "id": 2,
+      "name": "Artist 2",
+      "wins": 40,
+      "losses": 10,
+      "profilePhoto": "link_to_photo"
+    },
+    {
+      "id": 3,
+      "name": "Artist 3",
+      "wins": 28,
+      "losses": 28,
+      "profilePhoto": "link_to_photo"
+    },
+    {
+      "id": 4,
+      "name": "Artist 4",
+      "wins": 36,
+      "losses": 14,
+      "profilePhoto": "link_to_photo"
+    },
+    {
+      "id": 5,
+      "name": "Artist 5",
+      "wins": 20,
+      "losses": 20,
+      "profilePhoto": "link_to_photo"
+    },
+    {
+      "id": 6,
+      "name": "Artist 6",
+      "wins": 30,
+      "losses": 10,
+      "profilePhoto": "link_to_photo"
+    },
+    {
+      "id": 7,
+      "name": "Artist 7",
+      "wins": 25,
+      "losses": 25,
+      "profilePhoto": "link_to_photo"
+    }
+  ]
+  

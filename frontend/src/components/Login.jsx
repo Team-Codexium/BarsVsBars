@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../lib/userModel';
 import { useState } from 'react';
 import Spinner from './Spinner';
+import { GoogleLogin } from "@react-oauth/google";
 
 const inputDiv = "flex flex-col space-y-1"
 const inputField = "shadow appearance-none border  rounded-lg py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline";
@@ -41,9 +42,18 @@ const Login = () => {
       }
     }
   };
+  //google login function
+  const handleLoginSuccess = (credentialResponse) => {
+    console.log(credentialResponse);
+    navigate('/dashboard');
+  };
+
+  const handleLoginError = () => {
+    console.log("Login Failed");
+  };
 
   return (
-    <div className="h-[100vh] w-full m-auto flex flex-col space-y-8">
+    <div className="h-[100vh] w-[50%] m-auto flex flex-col space-y-8">
 
 
       <div className='flex flex-col text-secondary px-8 justify-center items-center pt-16'>
@@ -75,7 +85,23 @@ const Login = () => {
           : "Log in"}</button>
         {errorMessage && <p className="font-bold font-poppinp text-center text-red-800">{errorMessage}</p>}
         <p>First time using it?<Link className="text-primary ml-2 font-bold" to="/sign-up">Register here to rock the world</Link></p>
+        <br />
+        <p>or login with</p>
+        <GoogleLogin
+                onSuccess={handleLoginSuccess}
+                onError={handleLoginError}
+                render={renderProps => (
+                  <button 
+                    onClick={renderProps.onClick} 
+                    disabled={renderProps.disabled} 
+                    className="bg-green-400 text-white font-semibold py-2 px-4 rounded-lg shadow-lg hover:bg-green-500 focus:outline-none"
+                  >
+                    Sign in with Google
+                  </button>
+                )}
+              />
       </form>
+    
     </div>
   )
 }
