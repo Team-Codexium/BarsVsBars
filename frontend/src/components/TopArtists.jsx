@@ -2,6 +2,7 @@ import React from 'react'
 import SearchBar from './SearchBar'
 import BattleBar from './BattleBar'
 import TopArtistBar from './TopArtistBar'
+
 const TopArtists = () => {
   return (
     <div>
@@ -9,12 +10,12 @@ const TopArtists = () => {
         <h1>Top Artists</h1></div>
         <SearchBar/>
         <TopArtistBar/>
-        <BattleBar artist1Name="wewewe" artist2Name="xxxxxxxxxxxxx"/>
-        <BattleBar artist1Name="wewewe" artist2Name="xxxxxxxxxxxxx"/>
-        <BattleBar artist1Name="wewewe" artist2Name="xxxxxxxxxxxxx"/>
-        <BattleBar artist1Name="wewewe" artist2Name="xxxxxxxxxxxxx"/>
-        <BattleBar artist1Name="wewewe" artist2Name="xxxxxxxxxxxxx"/>
-        <BattleBar artist1Name="wewewe" artist2Name="xxxxxxxxxxxxx"/>
+        <TopArtistBar/>
+        <TopArtistBar/>
+        <TopArtistBar/>
+        <TopArtistBar/>
+        <TopArtistBar/>
+     
     </div>
 
   )

@@ -41,8 +41,7 @@ const Home = () => {
           </div>
           
         </div>
-        <h1 className="text-white ml-6 text-[6vh]">Top Artist</h1>
-        <TopArtists/>
+      
     </div>
   );
 };
