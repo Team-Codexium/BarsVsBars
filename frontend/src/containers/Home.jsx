@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import AppWrap from "../wrapper/AppWrap";
 import hero from '../assets/hero.jpg';
-import { TopArtist } from "../components/TopArtist";
+import TopArtists from "../components/TopArtists";
 
 
 const Home = () => {
@@ -41,8 +41,7 @@ const Home = () => {
           </div>
           
         </div>
-        <h1 className="text-white ml-6 text-[6vh]">Top Artist</h1>
-        <TopArtist/>
+      
     </div>
   );
 };
