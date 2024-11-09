@@ -3,9 +3,9 @@ import userProfile from "../assets/userProfile.json"; // Mocked JSON data
 import AppWrap from "../wrapper/AppWrap";
 import Navbar from "../components/navBar";
 import { Link, Route, Routes } from "react-router-dom";
-import { BattleSection, Sidebar, Statistics, TopArtists } from "../components";
+import { BattleDetails, BattleSection, Sidebar, Statistics, TopArtists } from "../components";
 import CreateBattle from "../components/CreateBattle";
-import Battles from "./Battles";
+import LiveBattles from "../components/LiveBattles"
 
 const Dashboard = () => {
   const [userData, setUserData] = useState(null);
@@ -42,9 +42,10 @@ const Dashboard = () => {
                 </>
               }
             />
-            <Route  path="create-battle" element={<CreateBattle />} />
+            <Route  path="challenge" element={<CreateBattle />} />
             <Route  path="top-artists" element={<TopArtists />} />
-            <Route  path="battles" element={<Battles />} />
+            <Route  path="battles" element={<LiveBattles />} />
+            <Route  path="battle-detail" element={<BattleDetails />} />
           </Routes>
         </div>
       </div>

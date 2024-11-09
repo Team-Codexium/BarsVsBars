@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { userSchema } from "../lib/userModel";
 import { inputDiv, inputField } from "../constants";
 import Spinner from "./Spinner";
-import { GoogleLogin } from "@react-oauth/google";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const inputErrors = "text-red-500";
 
@@ -41,15 +41,8 @@ const SignUp = () => {
   const handleOAuthLogin = (provider) => {
     window.location.href = `http://localhost:3000/api/auth/${provider}`;
   };
-//google login functions
-  const handleLoginSuccess = (credentialResponse) => {
-    console.log(credentialResponse);
-    navigate('/dashboard');
-  };
-
-  const handleLoginError = () => {
-    console.log("Login Failed");
-  };
+//Auth 0 authentication method
+const { loginWithRedirect } = useAuth0();
 
   return (
     <div className="flex items-center justify-center min-h-screen ">
@@ -167,19 +160,7 @@ const SignUp = () => {
           <div className="text-center mt-4 flex flex-col">
             <p>Or sign up using:</p>
             <div className="flex justify-center space-x-4 mt-2">
-              <GoogleLogin
-                onSuccess={handleLoginSuccess}
-                onError={handleLoginError}
-                render={renderProps => (
-                  <button 
-                    onClick={renderProps.onClick} 
-                    disabled={renderProps.disabled} 
-                    className="bg-green-400 text-white font-semibold py-2 px-4 rounded-lg shadow-lg hover:bg-green-500 focus:outline-none"
-                  >
-                    Sign in with Google
-                  </button>
-                )}
-              />
+            <button onClick={() => loginWithRedirect()}>Log In</button>
               <button
                 type="button"
                 onClick={() => handleOAuthLogin("github")}

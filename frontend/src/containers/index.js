@@ -1,4 +1,4 @@
-import Battles from "./Battles";
+import Battles from "../components/LiveBattles";
 import Dashboard from "./Dashboard";
 import Home from "./Home";
   

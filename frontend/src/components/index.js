@@ -1,3 +1,4 @@
+import BattleDetails from "./BattleDetails"
 import BattleParticipant from "./BattleParticipant"
 import BattleSection from "./BattleSection"
 import CreateBattle from "./CreateBattle"
@@ -17,5 +18,6 @@ export {
   Sidebar,
   Statistics,
   TopArtists,
-  CreateBattle
+  CreateBattle,
+  BattleDetails
 }
