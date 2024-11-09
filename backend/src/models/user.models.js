@@ -59,10 +59,6 @@ const UserSchema = new Schema(
           type: Schema.Types.ObjectId,
           ref: 'User'
         },
-        battle: {
-          type: Schema.Types.ObjectId,
-          ref: 'Battle'
-        },
         status: {
           type: String,
           enum: ['pending', 'accepted', 'rejected'],
@@ -75,10 +71,6 @@ const UserSchema = new Schema(
         userId: {
           type: Schema.Types.ObjectId,
           ref: 'User'
-        },
-        battle: {
-          type: Schema.Types.ObjectId,
-          ref: 'Battle'
         },
         status: {
           type: String,
@@ -112,7 +104,6 @@ UserSchema.methods.generatAccessToken = function () {
     {
       _id: this._id,
       email: this.email,
-      username: this.username,
     },
     process.env.ACCESS_TOKEN_SECRET,
     {
@@ -121,16 +112,6 @@ UserSchema.methods.generatAccessToken = function () {
   );
 };
 
-UserSchema.methods.generatRefreshToken = function () {
-  return jwt.sign(
-    {
-      _id: this._id
-    },
-    process.env.REFRESH_TOKEN_SECRET,
-    {
-      expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
-    }
-  );
-};
+
 
 export const User = mongooses.model("User", UserSchema);
