@@ -17,6 +17,7 @@ const CreateBattle = () => {
     }
     getData();
 
+   
   }, []);
 
 
