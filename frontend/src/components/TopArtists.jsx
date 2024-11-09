@@ -9,6 +9,7 @@ const TopArtists = () => {
         <h1>Top Artists</h1></div>
         <SearchBar/>
         <TopArtistBar/>
+        
         <BattleBar artist1Name="wewewe" artist2Name="xxxxxxxxxxxxx"/>
         <BattleBar artist1Name="wewewe" artist2Name="xxxxxxxxxxxxx"/>
         <BattleBar artist1Name="wewewe" artist2Name="xxxxxxxxxxxxx"/>

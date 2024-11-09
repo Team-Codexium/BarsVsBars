@@ -4,7 +4,8 @@ import {} from 'dotenv/config'
 import dbConnect from './db/index.js';
 import Signup from './routes/signup.js';
 import login from './routes/login.js';
-
+import {upload,editProfile} from './utils/editProfile.js'
+import fetchArtist from './routes/callArtists.js'
 
 const app = express();
 
@@ -30,8 +31,8 @@ app.use(express.static("../public"));
 //Routes
 app.post("/api/auth/signup", Signup);
 app.post("/api/auth/login", login);
-
-
+app.post("/api/auth/editprofile",upload.single('profileImage'),editProfile)
+app.get('/api/db/artist',fetchArtist);
 
 
 //connecting to db and startting the erver

@@ -7,7 +7,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, handleSearch }) => {
         type="text"
         placeholder="Search..."
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) => {setSearchTerm(e.target.value); handleSearch(value)}}
         className="p-2 w-full rounded-md bg-purple-700 text-white placeholder-gray-300"
       />
       <button
