@@ -22,6 +22,7 @@ const SignUp = () => {
   });
 
   const onSubmit = async (data) => {
+    console.log(data)
     try {
       const response = await axios.post(
         "http://localhost:3000/api/auth/signup",
@@ -38,11 +39,11 @@ const SignUp = () => {
     }
   };
 
-  const handleOAuthLogin = (provider) => {
-    window.location.href = `http://localhost:3000/api/auth/${provider}`;
-  };
+  // const handleOAuthLogin = (provider) => {
+  //   window.location.href = `http://localhost:3000/api/auth/${provider}`;
+  // };
 //Auth 0 authentication method
-const { loginWithRedirect } = useAuth0();
+// const { loginWithRedirect } = useAuth0();
 
   return (
     <div className="flex items-center justify-center min-h-screen ">
@@ -160,14 +161,14 @@ const { loginWithRedirect } = useAuth0();
           <div className="text-center mt-4 flex flex-col">
             <p>Or sign up using:</p>
             <div className="flex justify-center space-x-4 mt-2">
-            <button onClick={() => loginWithRedirect()}>Log In</button>
-              <button
+            {/* <button onClick={() => loginWithRedirect()}>Log In</button> */}
+              {/* <button
                 type="button"
                 onClick={() => handleOAuthLogin("github")}
                 className="bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg shadow-lg hover:bg-gray-700 transition duration-200"
               >
                 GitHub
-              </button>
+              </button> */}
             </div>
           </div>
         </form>

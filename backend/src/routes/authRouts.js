@@ -4,7 +4,7 @@ import bcrypt from "bcrypt"
 
 const Signup = async (req, res, next) => {
   
-  const { name, email, password, bio, userType } = req.body;
+  const { fullName, email, password, bio, userType } = req.body;
   try {
     //check if user already exists
     const user = await User.findOne({email});
@@ -20,13 +20,13 @@ const Signup = async (req, res, next) => {
     const newUser = await User.create({
       userType,
       email,
-      name,
+      fullName,
       password,
       bio,
     });
 
     //Generating token
-    const token = await user.generatAccessToken();
+    const token = await user.generateAccessToken();
     return res
       .cookie("token", token, {
         httpOnly: true,
@@ -51,19 +51,20 @@ const Login = async (req,res, next) => {
  
   //Input from frontend
   const { email, password } = req.body;
+  console.log(req.body)
 
   try {
     // checks if the user is already exists
     const user = await User.findOne({ email }).select("+password");
-
+    // console.log(user)
     // if doesnt
     if (!user) {
       return res
         .status(400)
         .json({ success: false, message: "User not registered" });
     }
-    const isAuthenticated = await user.isValidPassword(password);
-
+    const isAuthenticated = await user.isPasswordCorrect(password);
+    console.log(isAuthenticated)
     if (!isAuthenticated) {
       return res
         .status(401)
@@ -72,7 +73,7 @@ const Login = async (req,res, next) => {
 
     //Generating JWT token
     const token = await user.generateAccessToken(user._id);
-
+    
     //Setting the token in the response cookie sending response
     return res
       .cookie("token", token, {

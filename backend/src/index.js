@@ -34,7 +34,7 @@ import jwtAuth from './middlewares/jwtAurth.js';
 
 //Auth Routes
 app.post("/api/auth/signup", Signup);
-app.post("/api/auth/login",jwtAuth, Login);
+app.post("/api/auth/login", Login);
 
 //User Routes
 app.get("/artists", Artists);

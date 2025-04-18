@@ -22,6 +22,7 @@ const Login = () => {
   });
 
   const onSubmit = async (data) => {
+    console.log(data)
     try {
       const response = await axios.post("http://localhost:3000/api/auth/login", data, {
         withCredentials: true
@@ -43,14 +44,14 @@ const Login = () => {
     }
   };
   //google login function
-  const handleLoginSuccess = (credentialResponse) => {
-    console.log(credentialResponse);
-    navigate('/dashboard');
-  };
+  // const handleLoginSuccess = (credentialResponse) => {
+  //   console.log(credentialResponse);
+  //   navigate('/dashboard');
+  // };
 
-  const handleLoginError = () => {
-    console.log("Login Failed");
-  };
+  // const handleLoginError = () => {
+  //   console.log("Login Failed");
+  // };
 
   return (
     <div className="h-[100vh] w-[50%] m-auto flex flex-col space-y-8">
@@ -87,7 +88,7 @@ const Login = () => {
         <p>First time using it?<Link className="text-primary ml-2 font-bold" to="/sign-up">Register here to rock the world</Link></p>
         <br />
         <p>or login with</p>
-        <GoogleLogin
+        {/* <GoogleLogin
                 onSuccess={handleLoginSuccess}
                 onError={handleLoginError}
                 render={renderProps => (
@@ -99,7 +100,7 @@ const Login = () => {
                     Sign in with Google
                   </button>
                 )}
-              />
+              /> */}
       </form>
     
     </div>
