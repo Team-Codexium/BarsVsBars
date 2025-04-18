@@ -23,18 +23,21 @@ app.use(express.static("../public"));
 
 
 //Routes Imports
-import { Login, Signup } from './routes/authRouts.js';
+import { getUser, Login, logout, Signup } from './routes/authRouts.js';
 import { ArtistDetails, Artists } from './routes/userRoutes.js';
 import { Vote } from './routes/voteRoutes.js';
 import { AcceptInvite, AddMedia, BattleDetails, Battles, inviteSend } from './routes/battleRoutes.js';
 import { AddComment, Comments, DeleteComment } from './routes/commentRoutes.js';
-import jwtAuth from './middlewares/jwtAurth.js';
+import jwtAuth from './middlewares/jwtAuth.js';
 
 
 
 //Auth Routes
 app.post("/api/auth/signup", Signup);
 app.post("/api/auth/login", Login);
+app.get("/api/auth/getUser", jwtAuth, getUser)
+app.get("/api/auth/logout", jwtAuth, logout)
+
 
 //User Routes
 app.get("/artists", Artists);

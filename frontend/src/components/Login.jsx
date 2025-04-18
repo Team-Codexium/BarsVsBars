@@ -7,6 +7,7 @@ import { loginSchema } from '../lib/userModel';
 import { useState } from 'react';
 import Spinner from './Spinner';
 import { GoogleLogin } from "@react-oauth/google";
+import { useAuth } from '../../contexts/AuthContext';
 
 const inputDiv = "flex flex-col space-y-1"
 const inputField = "shadow appearance-none border  rounded-lg py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline";
@@ -15,33 +16,14 @@ const inputErrors = "text-red-500"
 
 
 const Login = () => {
-  const navigate = useNavigate()
-  const [errorMessage, setErrorMessage] = useState("");
   const { register, handleSubmit, formState: { errors, isSubmitting }, } = useForm({
     resolver: yupResolver(loginSchema)
   });
 
+  const { login, errorMessage } = useAuth();
+
   const onSubmit = async (data) => {
-    console.log(data)
-    try {
-      const response = await axios.post("http://localhost:3000/api/auth/login", data, {
-        withCredentials: true
-      });
-      // console.log("response",response);
-
-      if (response.data.success) {
-        navigate("/dashboard");
-      }
-
-    } catch (error) {
-      console.error("Error during login: ", error.message);
-      if (error.response.status === 400) {
-        setErrorMessage(error.response.data.message);
-      }
-      if (error.response.status === 401) {
-        setErrorMessage(error.response.data.message);
-      }
-    }
+    await login(data);
   };
   //google login function
   // const handleLoginSuccess = (credentialResponse) => {
@@ -84,7 +66,7 @@ const Login = () => {
             <Spinner /> Logging in
           </div>)
           : "Log in"}</button>
-        {errorMessage && <p className="font-bold font-poppinp text-center text-red-800">{errorMessage}</p>}
+        {errorMessage && <p className="font-bold font-poppin text-center text-red-800">{errorMessage}</p>}
         <p>First time using it?<Link className="text-primary ml-2 font-bold" to="/sign-up">Register here to rock the world</Link></p>
         <br />
         <p>or login with</p>

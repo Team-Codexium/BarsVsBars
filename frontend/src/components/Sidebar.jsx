@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth } from "../../contexts/AuthContext";
 const Sidebar = () => {
-  const { logout } = useAuth0();
+  const { logout } = useAuth();
   return(
   <aside className="w-64  p-4 flex flex-col  space-y-4">
     <nav className="space-y-2">
@@ -20,7 +21,7 @@ const Sidebar = () => {
         Top Artist
       </Link>
     </nav>
-    <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+    <button onClick={logout}>
       Log Out
     </button>
   </aside>

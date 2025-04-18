@@ -1,18 +1,15 @@
-import React from 'react';
 import AppWrap from "../wrapper/AppWrap";
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { userSchema } from "../lib/userModel";
 import { inputDiv, inputField } from "../constants";
 import Spinner from "./Spinner";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth } from '../../contexts/AuthContext';
 
 const inputErrors = "text-red-500";
 
 const SignUp = () => {
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -21,22 +18,10 @@ const SignUp = () => {
     resolver: yupResolver(userSchema),
   });
 
+  const { signup, errorMessage } = useAuth();
+
   const onSubmit = async (data) => {
-    console.log(data)
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/signup",
-        data,
-        {
-          withCredentials: true,
-        }
-      );
-      if (response.data.success) {
-        navigate("/dashboard");
-      }
-    } catch (error) {
-      console.error("Error while signing up: ", error);
-    }
+    await signup(data);
   };
 
   // const handleOAuthLogin = (provider) => {

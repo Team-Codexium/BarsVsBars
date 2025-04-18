@@ -73,7 +73,7 @@ const Login = async (req,res, next) => {
 
     //Generating JWT token
     const token = await user.generateAccessToken(user._id);
-    
+
     //Setting the token in the response cookie sending response
     return res
       .cookie("token", token, {
@@ -92,7 +92,33 @@ const Login = async (req,res, next) => {
   }
 }
 
+const getUser = async (req, res) => {
+  try {
+    const user = req.user;
+    
+    return res.status(200).json({ success: true, user });
+  } catch (err) {
+    return res.status(500).json({ success: false, message: err.message });
+  }
+}
+
+const logout = async (req, res) => {
+  try {
+    // Clear the cookie and send a response
+    res.clearCookie("token", {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+    });
+    return res.status(200).json({ success: true, message: "Logged out successfully" });
+  } catch (err) {
+    return res.status(500).json({ success: false, message: err.message });
+  }
+}
+
 export {
   Signup,
-  Login
+  Login,
+  getUser,
+  logout
 };
